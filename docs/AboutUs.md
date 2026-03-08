@@ -27,7 +27,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Software Developer (Integration)
 * Responsibilities: Lead the implementation of core features, ensuring system reliability through unit testing and documentation.
-Manage the project repository and branching strategy to integrate individual modules into a cohesive, high-quality software release.
+  Manage the project repository and branching strategy to integrate individual modules into a cohesive, high-quality software release.
 
 ### Li Qiyu
 
@@ -38,9 +38,9 @@ Manage the project repository and branching strategy to integrate individual mod
 * Role: Team Leader
 * Responsibilities: software development
 
-### Xingchen
+### Guo Xingchen
 
-<img src="images/Xingchen722.png" width="200px">
+<img src="images/xingchen722.png" width="200px">
 
 [[github](https://github.com/Xingchen722)]
 
@@ -53,5 +53,5 @@ Manage the project repository and branching strategy to integrate individual mod
 
 [[github](https://github.com/brenda77777)]
 
-* Role: Tech Lead 
+* Role: Tech Lead
 * Responsibilities: Backend development
