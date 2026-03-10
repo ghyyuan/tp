@@ -273,7 +273,7 @@ Our target users:
 * are reasonably comfortable using CLI applications
 * want a structured way to track internship applications, deadlines, and follow-ups
 
-**Value proposition**: Hired! helps university students manage internship applications, company contacts, deadlines, 
+**Value proposition**: Hired! helps university students manage internship applications, company contacts, deadlines,
                        and interview records faster and more systematically than scattered notes or spreadsheet-based
                        tracking.
 
@@ -320,38 +320,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. Student provides the required details.
 4. System validates the input.
 5. System saves the application and assigns a unique ID.
-6. System displays the newly added application.  
+6. System displays the newly added application.
 
    Use case ends.
 
 **Extension**
 
-* 3a. Student leaves some fields unknown. 
-  * 3a1. Student marks fields as NA. 
-  
+* 3a. Student leaves some fields unknown.
+  * 3a1. Student marks fields as NA.
+
     Use case resumes at step 4.
 
 * 4a. System detects invalid input (empty company, wrong date format).
   * 4a1. System shows an error message.
-  * 4a2. Student re‑enters valid data. 
-  
+  * 4a2. Student re‑enters valid data.
+
     Use case resumes at step 4.
 
 * 4b. System detects a duplicate application.
-  * 4b1. System informs the student. 
-  
+  * 4b1. System informs the student.
+
     Use case ends.
 
 * *a. Student cancels the add operation at any time.
-  * *a1. System aborts the operation. 
-  
+  * *a1. System aborts the operation.
+
     Use case ends.
 
 
 
 ### **UC02 – Update Application Status**
 
-**Precondition** 
+**Precondition**
 
 * System is running
 * Student is authorized
@@ -371,31 +371,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 * 3a. Application ID/index does not exist.
-  * 3a1. System shows an error. 
-    
+  * 3a1. System shows an error.
+
     Use case ends.
 
 * 5a. Status value is invalid.
   * 5a1. System shows valid options.
-  * 5a2. Student enters a valid status. 
-    
+  * 5a2. Student enters a valid status.
+
     Use case resumes at step 5.
 
 * 6a. Status is a terminal state (e.g., Rejected/Offered).
   * 6a1. System shows a warning and requests confirmation.
-  * 6a2. Student confirms. 
-  
+  * 6a2. Student confirms.
+
     Use case resumes at step 6.
 
 * *a. Student cancels at any time.
-  * *a1. System cancels the update. 
-  
+  * *a1. System cancels the update.
+
     Use case ends.
 
 
 ### **UC03 – List and Sort Applications**
 
-**Precondition** 
+**Precondition**
 
 * System is running.
 
@@ -410,18 +410,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 2a. There are no applications.
-  * 2a1. System informs the student. 
+  * 2a1. System informs the student.
   * Use case ends.
 
 * 3a. Student requests sorting by deadline.
   *  3a1. System sorts applications by deadline.
-  * 3a2. System displays the sorted list. 
+  * 3a2. System displays the sorted list.
   * Use case ends.
 
 * 3b. Student requests filtering by status.
   * 3b1. System filters applications.
-  * 3b2. System displays filtered results. 
-  
+  * 3b2. System displays filtered results.
+
     Use case ends.
 
 ### **UC04: Delete an application**
