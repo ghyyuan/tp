@@ -25,13 +25,13 @@ public class CompanyTest {
         assertThrows(NullPointerException.class, () -> Company.isValidCompany(null));
 
         // invalid companyes
-        assertFalse(Company.isValidCompany("")); // empty string
-        assertFalse(Company.isValidCompany(" ")); // spaces only
+        assertFalse(Company.isValidCompanyName("")); // empty string
+        assertFalse(Company.isValidCompanyName(" ")); // spaces only
 
         // valid companyes
-        assertTrue(Company.isValidCompany("Blk 456, Den Road, #01-355"));
-        assertTrue(Company.isValidCompany("-")); // one character
-        assertTrue(Company.isValidCompany("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long company
+        assertTrue(Company.isValidCompanyName("Blk 456, Den Road, #01-355"));
+        assertTrue(Company.isValidCompanyName("-")); // one character
+        assertTrue(Company.isValidCompanyName("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long company
     }
 
     @Test
