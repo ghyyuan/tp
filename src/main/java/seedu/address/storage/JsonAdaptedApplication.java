@@ -20,63 +20,63 @@ import seedu.address.model.tag.Tag;
 /**
  * Jackson-friendly version of {@link Application}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedApplication {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Application's %s field is missing!";
 
-    private final String name;
+    private final String role;
     private final String phone;
-    private final String email;
-    private final String address;
+    private final String hrEmail;
+    private final String company;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedApplication} with the given application details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-            @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
-        this.name = name;
+    public JsonAdaptedApplication(@JsonProperty("role") String role, @JsonProperty("phone") String phone,
+                                  @JsonProperty("hrEmail") String hrEmail, @JsonProperty("company") String company,
+                                  @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+        this.role = role;
         this.phone = phone;
-        this.email = email;
-        this.address = address;
+        this.hrEmail = hrEmail;
+        this.company = company;
         if (tags != null) {
             this.tags.addAll(tags);
         }
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Application} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Application source) {
-        name = source.getName().fullName;
+    public JsonAdaptedApplication(Application source) {
+        role = source.getRole().roleName;
         phone = source.getPhone().value;
-        email = source.getEmail().value;
-        address = source.getAddress().value;
+        hrEmail = source.getHrEmail().value;
+        company = source.getCompany().companyName;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted application object into the model's {@code Application} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted application.
      */
     public Application toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> applicationTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
+            applicationTags.add(tag.toModelType());
         }
 
-        if (name == null) {
+        if (role == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Role.class.getSimpleName()));
         }
-        if (!seedu.address.model.application.Role.isValidName(name)) {
+        if (!seedu.address.model.application.Role.isValidRole(role)) {
             throw new IllegalValueException(seedu.address.model.application.Role.MESSAGE_CONSTRAINTS);
         }
-        final Role modelRole = new Role(name);
+        final Role modelRole = new Role(role);
 
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
@@ -86,24 +86,24 @@ class JsonAdaptedPerson {
         }
         final Phone modelPhone = new Phone(phone);
 
-        if (email == null) {
+        if (hrEmail == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, HrEmail.class.getSimpleName()));
         }
-        if (!HrEmail.isValidEmail(email)) {
+        if (!HrEmail.isValidHrEmail(hrEmail)) {
             throw new IllegalValueException(HrEmail.MESSAGE_CONSTRAINTS);
         }
-        final HrEmail modelHrEmail = new HrEmail(email);
+        final HrEmail modelHrEmail = new HrEmail(hrEmail);
 
-        if (address == null) {
+        if (company == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Company.class.getSimpleName()));
         }
-        if (!Company.isValidAddress(address)) {
+        // 🔴 假设你的 Company 类依然叫 isValidAddress，如果改成了 isValidCompany，请相应修改
+        if (!Company.isValidCompanyName(company)) {
             throw new IllegalValueException(Company.MESSAGE_CONSTRAINTS);
         }
-        final Company modelCompany = new Company(address);
+        final Company modelCompany = new Company(company);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
+        final Set<Tag> modelTags = new HashSet<>(applicationTags);
         return new Application(modelRole, modelPhone, modelHrEmail, modelCompany, modelTags);
     }
-
 }
