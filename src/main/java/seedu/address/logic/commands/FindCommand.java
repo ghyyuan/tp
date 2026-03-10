@@ -31,7 +31,8 @@ public class FindCommand extends Command {
         requireNonNull(model);
         model.updateFilteredApplicationList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_APPLICATIONS_LISTED_OVERVIEW, model.getFilteredApplicationList().size()));
+                String.format(Messages.MESSAGE_APPLICATIONS_LISTED_OVERVIEW,
+                        model.getFilteredApplicationList().size()));
     }
 
     @Override
