@@ -1,22 +1,22 @@
 package seedu.address.model.application;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
-import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalApplications.ALICE;
-import static seedu.address.testutil.TypicalApplications.BOB;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPANY_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import seedu.address.model.application.exceptions.ApplicationNotFoundException;
 import seedu.address.model.application.exceptions.DuplicateApplicationException;
 import seedu.address.testutil.ApplicationBuilder;
+import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalApplications.ALICE;
+import static seedu.address.testutil.TypicalApplications.BOB;
 
 public class UniqueApplicationListTest {
 
@@ -42,7 +42,7 @@ public class UniqueApplicationListTest {
     public void contains_applicationWithSameIdentityFieldsInList_returnsTrue() {
         uniqueApplicationList.add(ALICE);
         Application editedAlice = new ApplicationBuilder(ALICE)
-                .withPhone("99999999")
+                .withCompany(VALID_COMPANY_BOB)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         assertTrue(uniqueApplicationList.contains(editedAlice));
@@ -87,7 +87,7 @@ public class UniqueApplicationListTest {
     public void setApplication_editedApplicationHasSameIdentity_success() {
         uniqueApplicationList.add(ALICE);
         Application editedAlice = new ApplicationBuilder(ALICE)
-                .withPhone("99999999")
+                .withTags(VALID_TAG_HUSBAND)
                 .withTags(VALID_TAG_HUSBAND)
                 .build();
         uniqueApplicationList.setApplication(ALICE, editedAlice);
